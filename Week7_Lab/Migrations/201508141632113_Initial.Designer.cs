@@ -13,7 +13,7 @@ namespace Week7_Lab.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201508132025133_Initial"; }
+            get { return "201508141632113_Initial"; }
         }
         
         string IMigrationMetadata.Source

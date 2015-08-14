@@ -170,12 +170,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PinsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508132025133_Initial.cs" />
-    <Compile Include="Migrations\201508132025133_Initial.Designer.cs">
-      <DependentUpon>201508132025133_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201508141632113_Initial.cs" />
+    <Compile Include="Migrations\201508141632113_Initial.Designer.cs">
+      <DependentUpon>201508141632113_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508141650139_IncreasedNoteLength.cs" />
+    <Compile Include="Migrations\201508141650139_IncreasedNoteLength.Designer.cs">
+      <DependentUpon>201508141650139_IncreasedNoteLength.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -240,6 +245,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Pins\Create.cshtml" />
+    <Content Include="Views\Pins\Delete.cshtml" />
+    <Content Include="Views\Pins\Details.cshtml" />
+    <Content Include="Views\Pins\Edit.cshtml" />
+    <Content Include="Views\Pins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -253,8 +263,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508132025133_Initial.resx">
-      <DependentUpon>201508132025133_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508141632113_Initial.resx">
+      <DependentUpon>201508141632113_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508141650139_IncreasedNoteLength.resx">
+      <DependentUpon>201508141650139_IncreasedNoteLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

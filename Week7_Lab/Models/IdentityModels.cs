@@ -18,6 +18,7 @@ namespace Week7_Lab.Models
         public string LastName { get; set; }
 
         public ICollection<Pin> Pins { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<PinterestUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

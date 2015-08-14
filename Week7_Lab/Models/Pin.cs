@@ -10,14 +10,12 @@ namespace Week7_Lab.Models
     {
         public int PinId { get; set; }
 
-        [Required]
         public PinterestUser WhoPinned { get; set; }
 
-        [Required]
         public byte[] Image { get; set; }
         public string ImageLink { get; set; }
 
-        [MaxLength(250)]
+        [MaxLength(1000)]
         public string Note { get; set; }
 
         public static byte[] ScaleImage(byte[] source, int maxWidth, int maxHeight)

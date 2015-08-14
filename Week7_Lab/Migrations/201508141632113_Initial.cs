@@ -12,13 +12,13 @@ namespace Week7_Lab.Migrations
                 c => new
                     {
                         PinId = c.Int(nullable: false, identity: true),
-                        Image = c.Binary(nullable: false),
+                        Image = c.Binary(),
                         ImageLink = c.String(),
-                        Note = c.String(maxLength: 140),
-                        WhoPinned_Id = c.String(nullable: false, maxLength: 128),
+                        Note = c.String(maxLength: 250),
+                        WhoPinned_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.PinId)
-                .ForeignKey("dbo.AspNetUsers", t => t.WhoPinned_Id, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.WhoPinned_Id)
                 .Index(t => t.WhoPinned_Id);
             
             CreateTable(
@@ -96,8 +96,8 @@ namespace Week7_Lab.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Pins", "WhoPinned_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Pins", "WhoPinned_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
