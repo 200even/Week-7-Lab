@@ -4,42 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Movie Plots by Aaron</h2>
 
+
+<div id="wrapper">
+    <div id="columns">
+        @foreach (var item in Model)
+        {
+            <div class="pin">
+                <a href="@Html.DisplayFor(modelItem => item.ImageLink)"><img src="@Url.Action("GetImage", new { PinId = item.PinId })" /></a>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </p>
+                <h5>@Html.DisplayFor(modelItem => item.WhoPinned.Email)</h5>
+            </div>
+        }
+    </div>
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageLink)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Note)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <img src="@Url.Action("GetImage", new { PinId = item.PinId })" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageLink)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PinId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PinId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PinId })
-        </td>
-    </tr>
-}
-
-</table>

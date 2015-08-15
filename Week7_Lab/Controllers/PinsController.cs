@@ -20,9 +20,10 @@ namespace Week7_Lab.Controllers
             return File(pin.Image,"image");
         }
         // GET: Pins
+        [Authorize]
         public ActionResult Index()
         {
-            return View(db.Pins.ToList());
+            return View(db.Pins.Include(x => x.WhoPinned).ToList());
         }
 
         // GET: Pins/Details/5
