@@ -8,17 +8,14 @@
 
 
 <div id="wrapper">
-    <div id="columns">
-        @foreach (var item in Model)
-        {
-            <div class="pin">
-                <a href="@Html.DisplayFor(modelItem => item.ImageLink)"><img src="@Url.Action("GetImage", new { PinId = item.PinId })" /></a>
+    <div id="columns" ng-controller="PinterestController as pinCtrl">
+            <div class="pin" ng-repeat="pin in pins">
+                <a ng-href="{{ pin.ImageLink }}"><img ng-src="{{ pin.ImageUrl }}" /></a>
                 <p>
-                    @Html.DisplayFor(modelItem => item.Note)
+                    {{ pin.Note }}
                 </p>
-                <h5>@Html.DisplayFor(modelItem => item.WhoPinned.Email)</h5>
+                <h5>{{ pin.WhoPinned.Email }}</h5>
             </div>
-        }
     </div>
 </div>
 <p>

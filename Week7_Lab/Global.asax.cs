@@ -12,6 +12,7 @@ namespace Week7_Lab
     {
         protected void Application_Start()
         {
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="pinterest">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Pinterest</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -20,10 +20,11 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav" >
+                    <li>@Html.ActionLink("Home", "Index", "Pins")</li>
+                    <li>@Html.ActionLink("Create", "Create", "Pins")</li>
+                    <li>@Html.ActionLink("Boards", "Boards", "Pins")</li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,12 +34,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Pinterest</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/pinterest.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

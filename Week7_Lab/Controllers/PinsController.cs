@@ -23,7 +23,13 @@ namespace Week7_Lab.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Pins.Include(x => x.WhoPinned).ToList());
+            return View();
+        }
+
+        public ActionResult List()
+        {
+            var results = db.Pins.Include(x => x.WhoPinned).Select(p => new { p.ImageLink, p.Note, p.PinId, p.WhoPinned.Email, ImageUrl = "/Pins/GetImage/" + "?PinId=" + p.PinId}).ToList();
+            return Json(results, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Pins/Details/5
