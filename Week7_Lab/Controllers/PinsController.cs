@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -57,17 +58,21 @@ namespace Week7_Lab.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PinId,Image,ImageLink,Note")] Pin pin)
+        //[ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Create(string URL, string Notes, /*HttpPostedFileBase Image*/ string Image)
         {
             if (ModelState.IsValid)
             {
-                db.Pins.Add(pin);
+                var image = Migrations.Configuration.GetImageByteArray(Image);
+                var currentUser = db.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
+                var p = new Pin() { Image = image, ImageLink = URL, Note = Notes, WhoPinned = currentUser };
+                db.Pins.Add(p);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(true);
             }
 
-            return View(pin);
+            return Json(false);
         }
 
         // GET: Pins/Edit/5
